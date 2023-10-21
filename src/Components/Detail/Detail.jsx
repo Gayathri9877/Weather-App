@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Detail.css";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import img from "../../Assets/Images/ginkgo.jpg";
 
 export const Detail = () => {
@@ -9,12 +9,16 @@ export const Detail = () => {
   const [lat, setLat] = useState(6.927079);
   const [lon, setLon] = useState(79.861244);
 
+  const navigate = useNavigate();
+
   const handleSearch = () => {
     fetchCurrentData();
     fetchDayData();
   };
 
   useEffect(() => {
+    const userData = JSON.parse(localStorage.getItem("user"));
+    console.log(userData);
     fetchCurrentData();
     fetchDayData();
   }, []);
@@ -49,20 +53,15 @@ export const Detail = () => {
     const filteredData = data?.reduce((result, entry, index, array) => {
       // Extract the date part from dt_txt
       const currentDate = entry.dt_txt.split(" ")[0];
-
-      // Check if it's the first entry for each date
       if (
         index === 0 ||
         currentDate !== array[index - 1].dt_txt.split(" ")[0]
       ) {
         result.push(entry);
       }
-
       return result;
     }, []);
-
     setDaysData(filteredData);
-    console.log(filteredData);
   }
 
   if (!weatherData) {
@@ -134,12 +133,28 @@ export const Detail = () => {
               paddingLeft: "20px",
               color: "white",
               height: "40px",
-
               cursor: "pointer",
             }}
             onClick={handleSearch}
           >
             Search
+          </button>
+          <button
+            style={{
+              all: "unset",
+              backgroundColor: "green",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+              color: "white",
+              height: "40px",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              localStorage.clear();
+              window.location.reload();
+            }}
+          >
+            Logout
           </button>
         </div>
 

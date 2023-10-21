@@ -8,7 +8,14 @@ import { MDetails } from "../src/Components/MDetails/MDetails";
 import "./App.css";
 
 function App() {
-  const user = true;
+  let user;
+  const userData = JSON.parse(localStorage.getItem("user"));
+  console.log(userData);
+  if (userData?.username === "admin" && userData?.password === "123321") {
+    user = true;
+  } else {
+    user = false;
+  }
   return (
     <div className="App">
       <BrowserRouter>
