@@ -58,7 +58,7 @@ export const Login = () => {
             </div>
 
             <div className="button-container">
-              <Link to="/SignUpNew">
+              <Link to="/sign-up">
                 <button type="submit">Sign Up</button>
               </Link>
               {/* <Link to="/Detail"> */}

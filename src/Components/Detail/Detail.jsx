@@ -17,8 +17,7 @@ export const Detail = () => {
   };
 
   useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("user"));
-    console.log(userData);
+    // const userData = JSON.parse(localStorage.getItem("user"));
     fetchCurrentData();
     fetchDayData();
   }, []);
@@ -213,14 +212,16 @@ export const Detail = () => {
           {daysData?.slice(1, 4).map((item, index) => (
             <div key={index} className="day-card">
               <span>Date: {item.dt_txt.split(" ")[0]}</span>
-
               <span>Temperature: {item.main.temp}</span>
-
               <span>Humidity: {item.main.humidity}</span>
-
               <span>Wind: {item.wind.speed}</span>
-
               <span>Status: {item.weather[0].main}</span>
+              <img
+                src={`http://openweathermap.org/img/w/${item.weather[0].icon}.png`}
+                alt=""
+                width={50}
+                height={50}
+              />
             </div>
           ))}
 
