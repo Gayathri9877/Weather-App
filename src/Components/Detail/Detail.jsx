@@ -4,15 +4,12 @@ import { Link, NavLink } from "react-router-dom";
 import img from "../../Assets/Images/ginkgo.jpg";
 
 export const Detail = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [weatherData, setWeatherData] = useState(null);
-  //   const [allWeatherData, setAllWeatherData] = useState([]);
   const [daysData, setDaysData] = useState([]);
   const [lat, setLat] = useState(6.927079);
   const [lon, setLon] = useState(79.861244);
 
   const handleSearch = () => {
-    console.log("Searching for:", searchQuery);
     fetchCurrentData();
     fetchDayData();
   };
@@ -74,14 +71,14 @@ export const Detail = () => {
 
   return (
     <div
-      //   className=""
       style={{
         backgroundColor: "wheat",
         minHeight: "100vh",
         width: "100vw",
+        height: "100vh",
         display: "flex",
         position: "relative",
-        overflow: "scroll",
+        overflowY: "scroll",
       }}
     >
       <img
@@ -90,19 +87,19 @@ export const Detail = () => {
           height: "100%",
           width: "100%",
           position: "absolute",
+          objectFit: "cover",
         }}
       />
 
       <div
         style={{
           zIndex: "1",
-          height: "100vh",
           width: "100vw",
-          //   backgroundColor: "rebeccapurple",
           display: "flex",
           flexDirection: "column",
           justifyContent: "centers",
           alignItems: "center",
+          overflowY: "scroll",
         }}
       >
         {/* search box and button */}
@@ -112,7 +109,6 @@ export const Detail = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            // backgroundColor: "black",
             width: "600px",
             marginTop: "60px",
             columnGap: "30px",

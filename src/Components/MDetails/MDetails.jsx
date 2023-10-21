@@ -43,10 +43,12 @@ export const MDetails = () => {
       className=""
       style={{
         backgroundColor: "wheat",
-        height: "100vh",
+        minHeight: "100vh",
         width: "100vw",
+        height: "100vh",
         display: "flex",
         position: "relative",
+        overflowY: "scroll",
       }}
     >
       <img
@@ -55,19 +57,19 @@ export const MDetails = () => {
           height: "100%",
           width: "100%",
           position: "absolute",
+          objectFit: "cover",
         }}
       />
 
       <div
         style={{
           zIndex: "1",
-          height: "100vh",
           width: "100vw",
-          //   backgroundColor: "rebeccapurple",
           display: "flex",
           flexDirection: "column",
           justifyContent: "centers",
           alignItems: "center",
+          overflowY: "scroll",
         }}
       >
         {/* 3 days cards */}
