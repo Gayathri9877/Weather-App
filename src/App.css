@@ -1,0 +1,63 @@
+#root {
+  font-family: "Courier New", "Courier", "monospace";
+}
+
+.form-group {
+  /* color: #000; */
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+span {
+  color: black;
+}
+.card-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.day-card {
+  background-color: white;
+  height: 200px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 18px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.see-more-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  min-width: 200px;
+  background-color: rgb(72, 243, 101);
+}
+
+.see-more-div:hover {
+  background-color: rgb(251, 251, 251);
+}
+
+input {
+  background-color: white;
+  margin: 0px;
+  padding-left: 12px;
+  border: none;
+  height: 20px;
+  font-size: 16px;
+  border-radius: 3px;
+}
+
+@media only screen and (max-width: 800px) {
+  .top-bar {
+    flex-direction: column;
+    row-gap: 10px;
+  }
+}

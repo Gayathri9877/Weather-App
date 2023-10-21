@@ -5,6 +5,7 @@ import { SignUpNew } from "../src/Components/SignUpNew/SignUpNew";
 import { Login } from "../src/Components/Login/Login";
 import { Detail } from "../src/Components/Detail/Detail";
 import { MDetails } from "../src/Components/MDetails/MDetails";
+import "./App.css";
 
 function App() {
   const user = true;

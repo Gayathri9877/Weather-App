@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./MDetails.css";
+import img from "../../Assets/Images/ginkgo.jpg";
 
 export const MDetails = () => {
   const [weatherData, setWeatherData] = useState([]);
+  const [daysData, setDaysData] = useState([]);
 
   useEffect(() => {
     // Fetch data from the API and set it to the state
@@ -12,55 +14,87 @@ export const MDetails = () => {
       .then((response) => response.json())
       .then((data) => {
         setWeatherData(data.list);
-        console.log(data);
         makeNewArray(data?.list);
       })
       .catch((error) => console.error(error));
   }, []);
 
   function makeNewArray(data) {
-    console.log(data);
-    const newArray = data.reduce((result, item) => {
-      let entryData = item.dt_txt;
-      const dateRegex = /^(\d{4}-\d{2}-\d{2})/; // Match the date portion
-      const match = entryData.match(dateRegex);
-      if (match) {
-        const extractedDate = match[1]; // The matched date portion
-        console.log(extractedDate);
-      } else {
-        console.log("No date found in the string.");
+    const filteredData = data.reduce((result, entry, index, array) => {
+      // Extract the date part from dt_txt
+      const currentDate = entry.dt_txt.split(" ")[0];
+
+      // Check if it's the first entry for each date
+      if (
+        index === 0 ||
+        currentDate !== array[index - 1].dt_txt.split(" ")[0]
+      ) {
+        result.push(entry);
       }
-    }, {});
+
+      return result;
+    }, []);
+
+    setDaysData(filteredData);
   }
 
   return (
-    <div className="head">
-      <div className="box-container">
-        {weatherData.slice(0, 3).map((item, index) => (
-          <div key={index} className="box">
-            <h1>Date: {item.dt_txt}</h1>
-            <form className="form">
-              <div className="form-group">
-                <label>Temperature</label>
-                <input type="text" placeholder="Temperature" />
-              </div>
-              <div className="form-group">
-                <label>Humidity</label>
-                <input type="text" placeholder="Humidity" />
-              </div>
-              <div className="form-group">
-                <label>Wind</label>
-                <input type="text" placeholder="Wind" />
-              </div>
-              <div className="form-group">
-                <label>Status</label>
-                <input type="text" placeholder="Status" />
-              </div>
-            </form>
-          </div>
-        ))}
+    <div
+      className=""
+      style={{
+        backgroundColor: "wheat",
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        position: "relative",
+      }}
+    >
+      <img
+        src={img}
+        style={{
+          height: "100%",
+          width: "100%",
+          position: "absolute",
+        }}
+      />
+
+      <div
+        style={{
+          zIndex: "1",
+          height: "100vh",
+          width: "100vw",
+          //   backgroundColor: "rebeccapurple",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "centers",
+          alignItems: "center",
+        }}
+      >
+        {/* 3 days cards */}
+        <div
+          style={{
+            display: "flex",
+            marginTop: "20px",
+            columnGap: "10px",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {daysData.map((item, index) => (
+            <div key={index} className="day-card">
+              <span>Date: {item.dt_txt.split(" ")[0]}</span>
+
+              <span>Temperature: {item.main.temp}</span>
+
+              <span>Humidity: {item.main.humidity}</span>
+
+              <span>Wind: {item.wind.speed}</span>
+
+              <span>Status: {item.weather[0].main}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div></div>
     </div>
   );
 };
