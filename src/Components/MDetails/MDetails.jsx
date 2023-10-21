@@ -35,10 +35,12 @@ export const MDetails = () => {
 
   return (
     <div className="head">
-      <div className="box-container">
-        {weatherData.slice(0, 3).map((item, index) => (
+      <h1 className="hd">Upcoming Five days Weather Forcasting Report</h1>
+      <div className="box-container" >
+        
+        {weatherData.slice(0, 5).map((item, index) => (
           <div key={index} className="box">
-            <h1>Date: {item.dt_txt}</h1>
+            <h1 className="dat">Date: {item.dt_txt}</h1>
             <form className="form">
               <div className="form-group">
                 <label>Temperature</label>

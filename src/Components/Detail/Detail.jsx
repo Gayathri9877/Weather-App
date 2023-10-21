@@ -97,48 +97,114 @@ export const Detail = () => {
               </div>
             </form>
           </div>
-          {/* <div className="box">
-            <h1>Tomorrow</h1>
+          <div className="box">
+            <h1>Tommarrow</h1>
+            {/* ------- */}
             <form className="form">
+              <span>
+                Current Weather in {weatherData.name}, {weatherData.sys.country}
+              </span>
               <div className="form-group">
                 <label>Temperature</label>
-                <input type="text" placeholder="Temperature" />
+                <input
+                  type="text"
+                  placeholder="Temperature"
+                  value={weatherData.main.temp}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Humidity</label>
-                <input type="text" placeholder="Humidity" />
+                <input
+                  type="text"
+                  placeholder="Humidity"
+                  value={weatherData.main.humidity}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Wind</label>
-                <input type="text" placeholder="Wind" />
+                <input
+                  type="text"
+                  placeholder="Wind"
+                  value={weatherData.wind.speed}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Status</label>
-                <input type="text" placeholder="Status" />
+                <input
+                  type="text"
+                  placeholder="Status"
+                  value={weatherData.weather[0].main}
+                  readOnly
+                />
+              </div>
+              <div className="form-group">
+                <label>Description</label>
+                <input
+                  type="text"
+                  placeholder="Status"
+                  value={weatherData.weather[0].description}
+                  readOnly
+                />
               </div>
             </form>
           </div>
           <div className="box">
-            <h1>Day After Tomorrow</h1>
+            <h1>Day After Tommarrow</h1>
+            {/* ------- */}
             <form className="form">
+              <span>
+                Current Weather in {weatherData.name}, {weatherData.sys.country}
+              </span>
               <div className="form-group">
                 <label>Temperature</label>
-                <input type="text" placeholder="Temperature" />
+                <input
+                  type="text"
+                  placeholder="Temperature"
+                  value={weatherData.main.temp}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Humidity</label>
-                <input type="text" placeholder="Humidity" />
+                <input
+                  type="text"
+                  placeholder="Humidity"
+                  value={weatherData.main.humidity}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Wind</label>
-                <input type="text" placeholder="Wind" />
+                <input
+                  type="text"
+                  placeholder="Wind"
+                  value={weatherData.wind.speed}
+                  readOnly
+                />
               </div>
               <div className="form-group">
                 <label>Status</label>
-                <input type="text" placeholder="Status" />
+                <input
+                  type="text"
+                  placeholder="Status"
+                  value={weatherData.weather[0].main}
+                  readOnly
+                />
+              </div>
+              <div className="form-group">
+                <label>Description</label>
+                <input
+                  type="text"
+                  placeholder="Status"
+                  value={weatherData.weather[0].description}
+                  readOnly
+                />
               </div>
             </form>
-          </div> */}
+          </div>
         </div>
         <div>
           <Link to="MDetails">

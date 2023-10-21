@@ -68,6 +68,7 @@ body, html {
   background-color: white;
   border-color: whitesmoke;
   border-radius: 10px;
+  margin-top: 50px;
   margin: 5px;
   display: flex;
   flex-direction: column;
@@ -103,4 +104,12 @@ input {
 }
 .l1{
   margin-right: 2px;
+}
+.hd{
+  text-align: center;
+  color: white;
+  margin-top: 0;
+}
+.dat{
+  text-align: center;
 }
