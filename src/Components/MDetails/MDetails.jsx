@@ -13,9 +13,18 @@ export const MDetails = () => {
       .then((data) => {
         setWeatherData(data.list);
         console.log(data);
+        makeNewArray(data?.list);
       })
       .catch((error) => console.error(error));
   }, []);
+
+  function makeNewArray(data) {
+    console.log(data);
+    const newArray = data.reduce((result, item) => {
+      let entryData = item.dt_txt;
+      console.log(entryData);
+    }, {});
+  }
 
   return (
     <div className="head">
